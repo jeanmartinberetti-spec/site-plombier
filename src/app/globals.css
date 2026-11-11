@@ -1,0 +1,286 @@
+/* =========================================================
+   Palette sobre : anthracite, blanc cassé, un seul accent bleu pétrole
+   ========================================================= */
+:root {
+  --ink: #1d2125;           /* texte, en-tête, hero */
+  --ink-2: #2a2f34;
+  --ink-line: #3e454c;
+  --on-ink: #d9dcdf;        /* texte clair sur fond anthracite */
+  --on-ink-2: #b9bec3;
+  --paper: #f4f4f2;
+  --white: #ffffff;
+  --accent: #1f5a6b;        /* boutons d'appel */
+  --accent-dark: #163f4b;
+  --accent-light: #9cc6d2;  /* accents sur fond anthracite */
+  --pipe-dark: #4b5258;     /* tuyau en acier brossé */
+  --pipe-mid: #8c949b;
+  --pipe-shine: #d3d8dc;
+  --slate: #555b61;
+  --mist: #9aa1a7;
+  --line: #d8d9d6;
+  --todo: #fff1a8;
+
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+
+  --container: 72rem;
+  --gutter: 1rem;
+  --rail: 2.75rem;           /* position du tuyau à gauche du contenu */
+  --radius: 6px;
+  --section: clamp(4rem, 9vw, 7.5rem);
+}
+@media (min-width: 40em) {
+  :root { --gutter: 1.5rem; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 112;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.35rem, 6.4vw, 4.4rem); }
+h2 { font-size: clamp(1.8rem, 3.8vw, 2.75rem); }
+h3 { font-size: 1.2rem; line-height: 1.25; letter-spacing: 0; }
+p { margin: 0; text-wrap: pretty; }
+address { font-style: normal; }
+
+:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 3px; border-radius: 2px; }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  background: var(--white); color: var(--ink); padding: .6rem 1rem; border-radius: var(--radius);
+}
+.skip-link:focus { top: 1rem; }
+
+/* Emplacements à compléter : bien visibles pendant la préparation du site */
+.todo {
+  background: var(--todo);
+  color: #3d3200;
+  border-radius: 3px;
+  padding: 0 .3em;
+  font-family: var(--font-body);
+  font-variation-settings: normal;
+  font-weight: 600;
+  font-size: max(.8em, 0.85rem);
+  letter-spacing: 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 3.25rem; padding: .8rem 1.4rem;
+  border-radius: var(--radius); border: 2px solid transparent;
+  font-family: var(--font-body); font-weight: 700; font-size: 1.0625rem; line-height: 1.2;
+  text-decoration: none; cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.btn--accent { background: var(--accent); color: var(--white); }
+.btn--accent:hover { background: var(--accent-dark); }
+.btn--ink { background: var(--ink); color: var(--white); }
+.btn--ink:hover { background: var(--ink-2); }
+.btn--outline { border-color: var(--ink); color: var(--ink); }
+.btn--outline:hover { background: var(--paper); }
+.btn--ghost-light { border-color: rgba(255,255,255,.45); color: var(--white); }
+.btn--ghost-light:hover { border-color: var(--white); }
+.btn--sm { min-height: 2.75rem; padding: .5rem 1rem; font-size: 1rem; }
+.btn .todo { color: #3d3200; }
+
+/* ---------- Bandeau du mode démo ---------- */
+.demo-banner {
+  margin: 0; padding: .45rem var(--gutter);
+  background: var(--paper); color: var(--slate); border-bottom: 1px solid var(--line);
+  font-size: .875rem; font-weight: 600; text-align: center; line-height: 1.4;
+}
+
+/* ---------- En-tête ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ink); color: var(--white);
+  border-bottom: 1px solid var(--ink-line);
+}
+.site-header__inner { display: flex; align-items: center; gap: 1.5rem; min-height: 4.25rem; }
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; min-width: 0; }
+.brand__mark { width: 2rem; height: 2rem; color: var(--accent-light); flex: none; }
+.brand__text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand__name { font-family: var(--font-display); font-variation-settings: "wdth" 112; font-weight: 700; font-size: 1.05rem; }
+.brand__tag { font-size: .875rem; color: var(--mist); }
+.brand .todo { font-size: .75rem; }
+
+.site-nav { display: none; }
+.site-nav ul, .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+.site-nav ul { display: flex; gap: 1.5rem; }
+.site-nav a { text-decoration: none; font-size: .975rem; color: var(--on-ink); padding-block: .5rem; }
+.site-nav a:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--accent-light); text-underline-offset: 6px; }
+.header-call { display: none; }
+
+.mobile-menu { position: relative; }
+.mobile-menu summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: .5rem;
+  min-height: 2.75rem; padding: 0 .25rem; font-weight: 600;
+}
+.mobile-menu summary::-webkit-details-marker { display: none; }
+.burger, .burger::before, .burger::after { display: block; width: 18px; height: 2px; background: currentColor; position: relative; }
+.burger::before, .burger::after { content: ""; position: absolute; left: 0; }
+.burger::before { top: -6px; }
+.burger::after { top: 6px; }
+.mobile-menu nav {
+  position: absolute; right: 0; top: calc(100% + .6rem);
+  background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius);
+  min-width: 15rem; padding: .5rem;
+}
+.mobile-menu a { display: block; padding: .75rem .9rem; text-decoration: none; border-radius: 4px; }
+.mobile-menu a:hover { background: var(--ink-2); }
+
+@media (min-width: 64em) {
+  .site-nav { display: block; }
+  .header-call { display: inline-flex; }
+  .mobile-menu { display: none; }
+}
+
+/* ---------- Barre d'appel fixe (mobile) ---------- */
+.callbar {
+  position: fixed; inset: auto 0 0 0; z-index: 60;
+  display: flex; gap: .5rem;
+  padding: .6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom));
+  background: var(--ink); border-top: 1px solid var(--ink-line);
+}
+.callbar__call { flex: 1; }
+.callbar__quote { flex: none; padding-inline: 1.2rem; }
+body { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+@media (min-width: 64em) {
+  .callbar { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------- Le tuyau (rail) ---------- */
+/* Un vrai tube : dégradé sombre / clair / sombre pour donner du volume. */
+.rail { position: relative; }
+@media (min-width: 80em) {
+  .rail::before {
+    content: "";
+    position: absolute; top: 0; bottom: 0;
+    left: calc((100% - var(--container)) / 2 + var(--gutter) - var(--rail));
+    width: 8px;
+    background: linear-gradient(90deg, var(--pipe-dark), var(--pipe-mid) 35%, var(--pipe-shine) 50%, var(--pipe-mid) 65%, var(--pipe-dark));
+  }
+  /* Manchon à chaque titre de section, aligné sur le rail */
+  .fitting-title { position: relative; }
+  .fitting-title::before {
+    content: "";
+    position: absolute; left: calc(-1 * var(--rail) - 6px); top: .2em;
+    width: 20px; height: 14px; border-radius: 2px;
+    background: linear-gradient(90deg, #3f454a, #7d858c 40%, #c9ced2 50%, #7d858c 60%, #3f454a);
+  }
+}
+
+/* ---------- Pied de page ---------- */
+.site-footer { background: var(--ink); color: var(--on-ink); padding-block: 3.5rem 1.5rem; font-size: 1rem; }
+.site-footer__grid { display: grid; gap: 2.5rem; }
+@media (min-width: 48em) { .site-footer__grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+.site-footer__name { font-family: var(--font-display); font-variation-settings: "wdth" 112; font-weight: 700; font-size: 1.25rem; color: var(--white); margin-bottom: .25rem; }
+.site-footer address { margin-top: 1rem; line-height: 1.8; }
+.site-footer__small { margin-top: 1rem; color: var(--mist); }
+.site-footer__title { font-weight: 700; color: var(--white); margin-bottom: .75rem; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.site-footer a { text-underline-offset: 3px; text-decoration-color: var(--ink-line); }
+.site-footer a:hover { text-decoration-color: var(--accent-light); }
+.site-footer__legal { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--ink-line); color: var(--mist); font-size: .9rem; }
+
+/* ---------- Apparition douce au scroll ---------- */
+/* En CSS pur (aucun script) : l'élément apparaît pendant qu'il entre à l'écran.
+   Navigateurs sans support ou « moins d'animations » demandé : tout reste visible. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+/* Glissement seul, sans fondu : le texte reste toujours lisible (contraste intact pendant l'animation). */
+@keyframes reveal { from { transform: translateY(24px); } }
+
+/* ---------- Prix ---------- */
+.price { white-space: nowrap; }
+.price strong { font-family: var(--font-display); font-variation-settings: "wdth" 112; font-size: 1.35em; }
+
+/* ---------- Schéma du hero ---------- */
+.schematic { width: 100%; height: auto; overflow: visible; }
+.schematic .plan { fill: none; stroke: var(--ink-line); stroke-width: 1.25; }
+.schematic .plan--strong { stroke: #6b737a; stroke-width: 1.75; }
+.schematic text { fill: var(--mist); stroke: none; font-family: var(--font-body); font-size: 13px; }
+.pipe path { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
+.pipe__shadow { stroke: #2f353a; stroke-width: 16; }
+.pipe__body { stroke: var(--pipe-mid); stroke-width: 12; }
+.pipe__shine { stroke: #e4e8eb; stroke-width: 3; opacity: .75; }
+.fitting { fill: #50575d; stroke: #aeb5bb; stroke-width: 1; }
+.valve path { fill: #2f353a; stroke: #9aa1a7; stroke-width: 1.5; stroke-linejoin: round; }
+.valve .valve__handle { fill: none; stroke: var(--accent-light); stroke-width: 4; stroke-linecap: round; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .pipe path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s cubic-bezier(.6, 0, .2, 1) forwards; animation-delay: inherit; }
+  .pipe { animation-delay: inherit; }
+  .schematic .fitting, .schematic .valve { opacity: 0; animation: appear .4s ease forwards 1.5s; }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes appear { to { opacity: 1; } }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* =========================================================
+   Petites animations d'interface (CSS pur, aucun JavaScript)
+   Toutes désactivées si l'utilisateur demande moins d'animations.
+   ========================================================= */
+
+/* Icône du menu : les trois traits deviennent une croix à l'ouverture */
+.burger, .burger::before, .burger::after { transition: transform .25s ease, top .25s ease, background-color .2s ease; }
+.mobile-menu[open] .burger { background: transparent; }
+.mobile-menu[open] .burger::before { top: 0; transform: rotate(45deg); }
+.mobile-menu[open] .burger::after { top: 0; transform: rotate(-45deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Réponses des FAQ : se déplient en douceur (navigateurs récents ; ailleurs, ouverture normale) */
+  :root { interpolate-size: allow-keywords; }
+  main details::details-content {
+    height: 0; overflow: clip;
+    transition: height .3s ease, content-visibility .3s allow-discrete;
+  }
+  main details[open]::details-content { height: auto; }
+
+  /* Menu mobile : glisse et apparaît en fondu */
+  .mobile-menu nav { transition: opacity .2s ease, transform .2s ease; }
+  @starting-style {
+    .mobile-menu[open] nav { opacity: 0; transform: translateY(-8px); }
+  }
+
+  /* Barre d'appel mobile : monte depuis le bas au premier chargement */
+  .callbar { animation: callbar-in .45s cubic-bezier(.2, .8, .2, 1) .25s both; }
+}
+@keyframes callbar-in { from { transform: translateY(100%); } }

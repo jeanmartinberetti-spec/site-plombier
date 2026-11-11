@@ -1,0 +1,43 @@
+.section { padding-block: var(--section); }
+.paper { background: var(--paper); }
+.sub { margin-top: 1rem; max-width: 42rem; color: var(--slate); font-size: 1.125rem; }
+.sub a, .note a { font-weight: 700; color: var(--ink); text-underline-offset: 3px; text-decoration-color: var(--accent); }
+.split { display: grid; gap: 2rem; }
+@media (min-width: 64em) { .split { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
+
+/* Grilles façon tableau technique (filets de 1 px) */
+.districts, .communes, .services, .facts {
+  list-style: none; margin: 2rem 0 0; padding: 0;
+  display: grid; gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.districts { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 40em) { .districts { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 64em) { .districts { grid-template-columns: repeat(5, 1fr); } }
+.districts li { background: var(--white); padding: .8rem 1rem; font-weight: 600; font-size: 1rem; }
+
+.communes { margin-top: 0; grid-template-columns: 1fr 1fr; }
+.communes li { display: flex; align-items: center; gap: .5rem; padding: .9rem 1rem; background: var(--white); font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.communes svg { flex: none; color: var(--accent); }
+@media (max-width: 63.99em) { .communes { margin-top: .5rem; } }
+
+.facts { margin-inline: 0; }
+@media (min-width: 48em) { .facts { grid-template-columns: repeat(3, 1fr); } }
+.facts > div { background: var(--white); padding: 1.25rem; }
+.facts dt { font-size: .95rem; font-weight: 600; color: var(--slate); }
+.facts dd { margin: .3rem 0 0; font-size: 1.125rem; font-weight: 600; }
+.note { margin-top: 1.5rem; max-width: 42rem; color: var(--slate); }
+
+.services { grid-template-columns: 1fr; }
+@media (min-width: 40em) { .services { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 64em) { .services { grid-template-columns: repeat(3, 1fr); } }
+.services a { display: flex; align-items: center; gap: .75rem; height: 100%; padding: 1rem 1.25rem; background: var(--white); font-weight: 700; text-decoration: none; }
+.services a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.services svg { flex: none; color: var(--accent); }
+
+/* Flèche qui glisse au survol */
+.services a { position: relative; padding-right: 2.75rem; }
+/* Hors du flux du texte : la flèche n'est pas soulignée avec le lien */
+.services a::after { content: "→"; position: absolute; right: 1.1rem; top: 50%; translate: 0 -50%; color: var(--accent); transition: transform .2s ease; }
+.services a:hover::after { transform: translateX(4px); }
+.services a:active { background: var(--paper); }

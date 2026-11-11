@@ -1,0 +1,22 @@
+/* Pages légales : en-tête simple + texte lisible sur une colonne */
+.head { background: var(--ink); color: var(--white); padding-block: clamp(1.5rem, 4vw, 2.5rem) clamp(2rem, 5vw, 3.5rem); }
+.crumbs ol { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; font-size: .95rem; color: var(--mist); }
+.crumbs li + li::before { content: "/"; margin-right: .4rem; color: var(--ink-line); }
+.crumbs a { color: var(--on-ink); text-underline-offset: 3px; }
+.head h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+.updated { margin-top: .75rem; color: var(--on-ink-2); }
+
+.body { padding-block: clamp(2.5rem, 6vw, 4.5rem) var(--section); }
+.prose { max-width: 46rem; }
+.prose h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); margin-top: 2.75rem; }
+.prose h2:first-child { margin-top: 0; }
+.prose p, .prose ul, .prose dl { margin-top: 1rem; }
+.prose ul { padding-left: 1.25rem; display: grid; gap: .4rem; }
+.prose a { color: var(--ink); font-weight: 600; text-underline-offset: 3px; text-decoration-color: var(--accent); overflow-wrap: anywhere; }
+.prose dl { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.25rem; }
+.prose dt { font-weight: 600; color: var(--slate); }
+.prose dd { margin: 0; }
+@media (max-width: 30em) {
+  .prose dl { grid-template-columns: 1fr; gap: .1rem; }
+  .prose dd { margin-bottom: .6rem; }
+}

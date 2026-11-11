@@ -1,0 +1,76 @@
+.section { padding-block: var(--section); }
+.paper { background: var(--paper); }
+.ink { background: var(--ink); color: var(--white); }
+.sub { margin-top: 1rem; max-width: 42rem; color: var(--slate); font-size: 1.125rem; }
+.after { margin-top: 2rem; }
+
+/* ---------- Grille de prix ---------- */
+.grid { width: 100%; margin-top: 2rem; border-collapse: collapse; }
+.grid thead th {
+  text-align: left; font-size: .95rem; font-weight: 600; color: var(--slate);
+  padding: .9rem 1rem; border-bottom: 2px solid var(--ink);
+}
+.grid thead th:last-child, .grid td { text-align: right; }
+.grid tbody th, .grid td { padding: 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.grid tbody th { text-align: left; font-weight: 700; font-size: 1.0625rem; }
+.grid tbody th span { display: block; font-weight: 400; color: var(--slate); font-size: .95rem; margin-top: .15rem; }
+.grid td { color: var(--accent); font-weight: 600; white-space: nowrap; }
+.grid .group th { padding-top: 2rem; border-bottom: 1px solid var(--ink); }
+.group a {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--font-display); font-variation-settings: "wdth" 112; font-size: 1.2rem;
+  text-decoration: none;
+}
+.group a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.group svg { color: var(--accent); }
+@media (max-width: 30em) {
+  .grid tbody th, .grid td { padding-inline: .5rem; }
+}
+
+/* ---------- Conditions ---------- */
+.conditions {
+  margin: 2rem 0 0; display: grid; gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+@media (min-width: 48em) { .conditions { grid-template-columns: 1fr 1fr; } }
+.conditions > div { background: var(--white); padding: 1.25rem; }
+.conditions dt { font-size: .95rem; font-weight: 600; color: var(--slate); }
+.conditions dd { margin: .3rem 0 0; font-size: 1.125rem; font-weight: 600; }
+.conditions dd strong { font-family: var(--font-display); font-variation-settings: "wdth" 112; font-size: 1.6rem; color: var(--accent); }
+.conditions .note { font-size: .975rem; font-weight: 400; color: var(--slate); }
+
+.terms { display: grid; gap: 2rem; margin-top: 3rem; }
+@media (min-width: 48em) { .terms { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+.terms h3 { margin-bottom: 1rem; }
+.checks, .plus { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem; }
+.checks li, .plus li { position: relative; padding-left: 1.75rem; }
+.checks li::before {
+  content: ""; position: absolute; left: .15rem; top: .45em;
+  width: .8rem; height: .45rem;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+.plus li::before { content: "+"; position: absolute; left: .2rem; top: 0; font-weight: 700; color: var(--slate); }
+
+/* ---------- Étapes ---------- */
+.steps { list-style: none; margin: 2rem 0 0; padding: 0; counter-reset: st; display: grid; gap: 1.5rem; }
+@media (min-width: 56em) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+.steps li { counter-increment: st; border-top: 2px solid var(--ink); padding-top: 1rem; }
+.steps h3::before {
+  content: counter(st) ". "; color: var(--accent);
+}
+.steps p { margin-top: .4rem; color: var(--slate); }
+
+/* ---------- FAQ ---------- */
+.faq { margin-top: 2rem; max-width: 48rem; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem 0; font-weight: 700; font-size: 1.125rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font-size: 1.4rem; line-height: 1; color: var(--accent); transition: transform .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--accent); }
+.faq details p { padding-bottom: 1.25rem; color: var(--slate); max-width: 42rem; }

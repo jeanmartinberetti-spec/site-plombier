@@ -1,0 +1,68 @@
+.section { padding-block: var(--section); background: var(--paper); }
+.layout { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 64em) { .layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 3rem; } }
+.sub { margin-top: .75rem; color: var(--slate); }
+.small { color: var(--slate); font-size: .975rem; }
+.small a, .details a { font-weight: 700; color: var(--ink); text-underline-offset: 3px; text-decoration-color: var(--accent); }
+
+/* ---------- Formulaire ---------- */
+.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.25rem, 4vw, 2.5rem); }
+.form { display: grid; gap: 1.25rem; margin-top: 2rem; }
+.row { display: grid; gap: 1.25rem; }
+@media (min-width: 40em) { .row { grid-template-columns: 1fr 1fr; } }
+.field { display: grid; gap: .4rem; align-content: start; }
+.field label { font-weight: 700; }
+.optional { font-weight: 400; color: var(--slate); }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 3rem; padding: .7rem .85rem;
+  font: inherit; font-size: 1.0625rem; color: var(--ink);
+  background: var(--white); border: 1.5px solid #9aa1a7; border-radius: var(--radius);
+}
+.field textarea { resize: vertical; min-height: 8rem; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--ink); }
+.field [aria-invalid="true"] { border-color: #b3261e; }
+.field input::placeholder, .field textarea::placeholder { color: #80878d; }
+.error { color: #b3261e; font-weight: 600; font-size: .95rem; }
+.alert { padding: .9rem 1rem; border-left: 4px solid #b3261e; background: #fbeeed; font-weight: 600; }
+.alert a { color: inherit; }
+.privacy { font-size: .95rem; color: var(--slate); }
+.privacy a { color: var(--ink); text-underline-offset: 3px; }
+.form button { justify-self: start; min-width: 14rem; }
+.form button:disabled { opacity: .7; cursor: progress; }
+/* Champ piège : hors écran mais pas display:none (certains robots l'ignorent alors) */
+.trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.done { margin-top: 2rem; padding: 1.5rem; border-left: 6px solid var(--accent); background: var(--paper); display: grid; gap: .6rem; }
+.done h2 { font-size: 1.4rem; }
+.done a { font-weight: 700; color: var(--ink); }
+
+/* ---------- Coordonnées ---------- */
+.aside { display: grid; gap: 1.5rem; }
+.urgent { background: var(--ink); color: var(--white); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: .5rem; }
+.urgentLabel { font-weight: 600; color: var(--on-ink); }
+.phone {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--font-display); font-variation-settings: "wdth" 112; font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.1rem); line-height: 1.1;
+  color: var(--accent-light); text-decoration: none;
+}
+.phone:hover { text-decoration: underline; text-underline-offset: 6px; }
+.urgent .small { color: var(--on-ink-2); }
+.details { margin: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.details > div { background: var(--white); padding: 1rem 1.25rem; }
+.details dt { display: flex; align-items: center; gap: .5rem; font-size: .95rem; font-weight: 600; color: var(--slate); }
+.details dt svg { color: var(--accent); }
+.details dd { margin: .3rem 0 0; font-weight: 600; overflow-wrap: anywhere; }
+
+/* Envoi en cours : petit cercle qui tourne dans le bouton */
+.form button[aria-busy="true"]::before {
+  content: ""; width: 1rem; height: 1rem; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .35); border-top-color: var(--white);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .form button[aria-busy="true"]::before { animation: spin .8s linear infinite; }
+  .done { animation: done-in .45s ease-out both; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes done-in { from { opacity: 0; transform: translateY(10px); } }
+.demoNote { font-size: .95rem; color: var(--slate); font-style: italic; }

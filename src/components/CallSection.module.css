@@ -1,0 +1,10 @@
+.call { padding-block: var(--section); background: var(--ink); color: var(--white); }
+.bigPhone {
+  display: inline-block; margin-top: 1.5rem;
+  font-family: var(--font-display); font-variation-settings: "wdth" 112; font-weight: 700;
+  font-size: clamp(2.25rem, 8vw, 4.5rem); line-height: 1;
+  color: var(--accent-light); text-decoration: none;
+}
+.bigPhone:hover { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; }
+.text { margin-top: 1.25rem; color: var(--on-ink); font-size: 1.125rem; }
+.after { margin-top: 2rem; }

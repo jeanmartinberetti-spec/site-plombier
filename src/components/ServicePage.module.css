@@ -1,0 +1,83 @@
+/* ---------- Sections ---------- */
+.section { padding-block: var(--section); }
+.tight { padding-top: 0; }
+.paper { background: var(--paper); }
+.ink { background: var(--ink); color: var(--white); }
+.sub { margin-top: 1rem; max-width: 42rem; color: var(--slate); font-size: 1.125rem; }
+.after { margin-top: 2rem; }
+.h2Small { font-size: clamp(1.4rem, 2.6vw, 1.75rem); }
+.split { display: grid; gap: 3rem; }
+@media (min-width: 64em) { .split { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+/* ---------- Signes ---------- */
+.signs { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: .8rem; }
+.signs li { position: relative; padding-left: 1.75rem; font-size: 1.0625rem; }
+.signs li::before {
+  content: ""; position: absolute; left: .1rem; top: .5em;
+  width: .7rem; height: .7rem; border-radius: 50%;
+  border: 2px solid var(--accent);
+}
+
+/* ---------- Ce que l'on fait ---------- */
+.work { list-style: none; margin: 1.75rem 0 0; padding: 0; counter-reset: w; display: grid; }
+.work li { counter-increment: w; position: relative; padding: 1rem 0 1rem 3rem; border-top: 1px solid var(--line); }
+.work li::before {
+  content: counter(w); position: absolute; left: 0; top: 1rem;
+  width: 2rem; height: 2rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--ink); color: var(--white);
+  font-family: var(--font-display); font-variation-settings: "wdth" 112; font-weight: 700; font-size: .95rem;
+}
+.work p { margin-top: .3rem; color: var(--slate); }
+
+/* ---------- Prix ---------- */
+.prices { list-style: none; margin: 2rem 0 0; padding: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.prices li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 1.5rem; padding: 1.1rem 1.25rem; }
+.prices li + li { border-top: 1px solid var(--line); }
+.prices li > span:first-child { display: grid; gap: .15rem; }
+.prices li > span:first-child > span { color: var(--slate); font-size: .95rem; }
+.prices :global(.price) { color: var(--accent); font-weight: 600; }
+.included { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .5rem; color: var(--slate); }
+.included li { position: relative; padding-left: 1.5rem; }
+.included li::before {
+  content: ""; position: absolute; left: .1rem; top: .45em;
+  width: .7rem; height: .4rem;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+/* ---------- En attendant ---------- */
+.meanwhile {
+  border: 1.5px solid var(--ink); border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-left-width: 6px;
+}
+.meanwhile ol { margin: 1.25rem 0 0; padding-left: 1.25rem; display: grid; gap: .6rem; }
+.meanwhile li::marker { font-weight: 700; color: var(--accent); }
+
+/* ---------- FAQ ---------- */
+.faq { margin-top: 2rem; max-width: 48rem; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem 0; font-weight: 700; font-size: 1.125rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font-size: 1.4rem; line-height: 1; color: var(--accent); transition: transform .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--accent); }
+.faq details p { padding-bottom: 1.25rem; color: var(--slate); max-width: 42rem; }
+
+/* ---------- Zone + autres services ---------- */
+.more { display: inline-block; margin-top: 1.25rem; font-weight: 700; text-underline-offset: 4px; text-decoration-color: var(--accent); }
+.others { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.others a { display: flex; align-items: center; gap: .75rem; padding: .9rem 1rem; background: var(--white); font-weight: 600; text-decoration: none; }
+.others a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.others svg { flex: none; color: var(--accent); }
+
+/* Flèche qui glisse au survol */
+.others a { position: relative; padding-right: 2.75rem; }
+/* Hors du flux du texte : la flèche n'est pas soulignée avec le lien */
+.others a::after { content: "→"; position: absolute; right: 1.1rem; top: 50%; translate: 0 -50%; color: var(--accent); transition: transform .2s ease; }
+.others a:hover::after { transform: translateX(4px); }
+.others a:active { background: var(--paper); }
